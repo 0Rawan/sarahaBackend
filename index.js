@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.static('uploads'))
 
 dbConnection()
-
+app.set('trust proxy',true); 
 app.use('/user',userRouter)
 app.use('/message',messageRouter)
 

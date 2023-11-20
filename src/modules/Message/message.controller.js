@@ -4,7 +4,7 @@ import { AppError } from '../../utils/AppError.js';
 
 export const sendMessage = catchAsyncError(async(req,res,next)=>{
     const {id,message} = req.body
-    const userMessage = await messageModel.insertMany({sentToUserId:id,message:message, ip:  req.ip, userAgent: req.get('User-Agent')})
+    const userMessage = await messageModel.insertMany({sentToUserId:id,message:message, ip:  req.headers, userAgent: req.get('User-Agent')})
     userMessage ? res.status(200).json({status:200,message:"success"}) : next(new AppError("Failed to send message",400))
 })
 
