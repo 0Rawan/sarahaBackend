@@ -39,6 +39,7 @@ app.listen(process.env.PORT || port , ()=>{
 
 
 
-process.on('unhandledRejection',()=>{
+process.on('unhandledRejection',(error)=>{
+    console.log(error)
     console.log("unhandledRejectionError")
 })
